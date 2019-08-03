@@ -2,6 +2,12 @@
 // Nicolás de Ory 2017-2018
 // Programa que funciona con la tira de LEDs WS2812B y el teclado Yamaha CLP320
 // Works with the WS2812B LED strip and the Yamaha CLP320 keyboard
+
+
+// APA102 Support - Discord - The Torrent#5588, the_torrent@outlook.com
+// Led Count Error - For 88LED'S, number 90 must be written otherwise it counts it as 86 led's.
+// Brightness range 0-355
+
 #include <MIDI.h>
 #include "FastLED.h"
 #include <AltSoftSerial.h>
@@ -11,10 +17,11 @@ FASTLED_USING_NAMESPACE
 #define button_pin  5
 #define POTENTIOMETER_PIN 5
 
+#define CLOCK_PIN   4
 #define DATA_PIN    3
-#define LED_TYPE    WS2812B
+#define LED_TYPE    APA102
 #define COLOR_ORDER GRB
-#define NUM_LEDS    76
+#define NUM_LEDS    90
 #define PEDAL_STRENGTH 30
 #define NO_PEDAL_STRENGTH 60
 #define NOTE_HOLD_FADE 5
@@ -23,7 +30,7 @@ byte mode = 0;
 CRGB leds[NUM_LEDS];
 boolean onLeds[NUM_LEDS];
 
-#define BRIGHTNESS          90
+#define BRIGHTNESS          355
 #define PASSIVE_FPS 120
 
 // MODE 5 PALETTES
@@ -206,7 +213,7 @@ void setup() {
 
   
   // LED SETUP
-  FastLED.addLeds<LED_TYPE,DATA_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+  FastLED.addLeds<LED_TYPE,DATA_PIN,CLOCK_PIN,COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
   FastLED.clear();
   pinMode(13,OUTPUT); // DEBUG LED
