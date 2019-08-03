@@ -17,7 +17,7 @@ There are implementations for 7 lighting modes.
   - Optionally, a PCB that connects all of these components together. A design for it [can be found here](https://www.pcbway.com/project/shareproject/PianoLED___Light_up_the_notes_as_you_play.html).
   
 **Customizable parameters:**
- - The LED strip model, color order and number of LEDs can be configured at the top of the file (default is a strip of 74 _WS2812B_ LEDs, color order _GRB_, suitable for a regular 8-octave digital piano.
+ - The LED strip model, color order and number of LEDs can be configured at the top of the file. Currently set - as per reconfiguration by The Torrrent#5588, for (90-2)88 keys of APA102 strip.
  - Note fade out duration, sustain pedal strength
  - Color HSV values, palettes (right now there are 6 palettes that can be navigated through with the potentiometer)
  - New modes can be added fairly easily.
